@@ -1,0 +1,124 @@
+/* ===============================
+   Variáveis globais de layout
+=============================== */
+:root {
+  --header-height: 70px;
+  --footer-height: 120px; /* ajustável se o footer tiver múltiplas linhas */
+  --gap: 1rem;
+
+  /* Cores */
+  --color-primary: #28a745;
+  --color-primary-hover: #218838;
+  --color-background: #ffffff;
+  --color-text: #333;
+  --color-footer-bg: #1e1e1e;
+  --color-footer-bottom-bg: #151515;
+  --color-footer-text: #fff;
+}
+
+/* ===============================
+   Reset básico
+=============================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  min-height: 100vh;
+}
+
+/* Links globais */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* Botões globais */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+/* ===============================
+   Layout principal
+=============================== */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Garante espaço entre header e footer */
+main {
+  flex: 1 0 auto; /* ocupa todo espaço disponível */
+  padding: var(--gap);
+  margin-top: var(--header-height);
+  margin-bottom: var(--footer-height);
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+/* ===============================
+   Header padrão
+=============================== */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 0 2rem;
+}
+
+/* ===============================
+   Footer padrão
+=============================== */
+.footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  width: 100%;
+  padding: 2rem;
+  flex-shrink: 0; /* não encolhe */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer-bottom {
+  background-color: var(--color-footer-bottom-bg);
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+
+/* ===============================
+   Estilos responsivos básicos
+=============================== */
+@media (max-width: 768px) {
+  main {
+    margin-top: calc(var(--header-height) + 0.5rem);
+    margin-bottom: calc(var(--footer-height) + 0.5rem);
+    padding: 0.5rem;
+  }
+}
